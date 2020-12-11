@@ -1,0 +1,45 @@
+:root {
+  --primary-white: #ffffff;
+}
+
+.App {
+  font-family: sans-serif;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.items {
+  max-width: 900px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  transition: all 0.9s ease-in-out;
+}
+
+p {
+  border: 0.6px solid black;
+  padding: 5px;
+  min-width: 60px;
+  height: 60px;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+  cursor: pointer;
+  font-size: 20px;
+  border-radius: 40px;
+  position: relative;
+}
+
+p:hover {
+  background: linear-gradient(grey, black);
+  color: var(--primary-white);
+  border: 1px dashed var(--primary-white);
+}
+
+.dragged {
+  background: var(--primary-white);
+  color: var(--primary-white);
+}
