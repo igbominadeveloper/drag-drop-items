@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
-import "./styles.css";
+import './styles.css';
 
-import store from "./store";
+import store from './store';
 
 export default function App() {
   const [items, setItems] = React.useState(store);
@@ -21,26 +21,21 @@ export default function App() {
   };
 
   const handleDrag = (event, indexOfItem, itemDragged) => {
-    event.dataTransfer.dropEffect = "move";
-    event.dataTransfer.effectAllowed = "move";
-    event.dataTransfer.setData("index-dragged", indexOfItem);
-    event.dataTransfer.setData("item-dragged", JSON.stringify(itemDragged));
-    event.dataTransfer.setData("original-element", event.target);
+    event.dataTransfer.dropEffect = 'move';
+    event.dataTransfer.effectAllowed = 'move';
+    event.dataTransfer.setData('index-dragged', indexOfItem);
+    event.dataTransfer.setData('item-dragged', JSON.stringify(itemDragged));
+    event.dataTransfer.setData('original-element', event.target);
   };
 
   const handleDrop = (indexOfItemDroppedOn, event, dropValue) => {
-    const indexOfDraggedItem = event.dataTransfer.getData("index-dragged");
-    const draggedItem = JSON.parse(event.dataTransfer.getData("item-dragged"));
-    const originalElement = event.dataTransfer.getData("original-element");
+    const indexOfDraggedItem = event.dataTransfer.getData('index-dragged');
+    const draggedItem = JSON.parse(event.dataTransfer.getData('item-dragged'));
 
     const tempArray = [...items];
 
     tempArray.splice(indexOfItemDroppedOn, 1, draggedItem);
     tempArray.splice(indexOfDraggedItem, 1, dropValue);
-
-    console.log(originalElement, "orignal");
-
-    // originalElement.classList.remove("dragged");
     setItems(tempArray);
   };
 
