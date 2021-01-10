@@ -1,4 +1,5 @@
 import React from 'react';
+import _shuffle from 'lodash/shuffle';
 
 import './styles.css';
 
@@ -21,11 +22,16 @@ export default function App() {
   };
 
   const handleDrag = (event, indexOfItem, itemDragged) => {
+    event.target.classList.add('dragged');
     event.dataTransfer.dropEffect = 'move';
     event.dataTransfer.effectAllowed = 'move';
     event.dataTransfer.setData('index-dragged', indexOfItem);
     event.dataTransfer.setData('item-dragged', JSON.stringify(itemDragged));
     event.dataTransfer.setData('original-element', event.target);
+    event.target.classList.remove('dragged');
+
+    const tempArray = [...items];
+    tempArray.splice(indexOfItem, 1);
   };
 
   const handleDrop = (indexOfItemDroppedOn, event, dropValue) => {
@@ -36,14 +42,31 @@ export default function App() {
 
     tempArray.splice(indexOfItemDroppedOn, 1, draggedItem);
     tempArray.splice(indexOfDraggedItem, 1, dropValue);
+
     setItems(tempArray);
   };
 
   const preventDefault = (event) => event.preventDefault();
 
+  const reset = () => setItems(store);
+
+  const shuffle = () => {
+    const shuffledItems = _shuffle(items);
+    setItems(shuffledItems);
+  };
+
   return (
     <div className="App">
       <h2 className="heading">Click or drag, your choice!!!</h2>
+
+      <div className="controls">
+        <button className="button shuffle-button" onClick={shuffle}>
+          Shuffle
+        </button>
+        <button className="button reset-button" onClick={reset}>
+          Reset
+        </button>
+      </div>
 
       <div className="items">
         {items.map((item, index) => (
