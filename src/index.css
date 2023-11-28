@@ -42,8 +42,8 @@ html {
 */
 
 .items {
-  width: 90vw;
-  max-width: 1200px;
+  width: 90%;
+  max-width: 800px;
   margin: 40px 0;
 
   display: flex;
@@ -53,13 +53,6 @@ html {
 
   animation: slide-in-from-down 1.5s;
 }
-
-@media screen and (min-width: var(--lg)) {
-  .items {
-    width: 60vw;
-  }
-}
-
 /* 
    ==================================
    ITEM
@@ -79,6 +72,11 @@ html {
   cursor: pointer;
 }
 
+.item:hover {
+  background: var(--primary-black);
+  color: var(--primary-white);
+}
+
 .item-name {
   font-size: 15px;
   font-weight: 500;
@@ -91,11 +89,15 @@ html {
   height: 2rem;
 }
 
-/* @media screen and (min-width: var(--lg)) { */
-.item:hover {
-  animation: right-dance 2s 2s infinite;
+@media screen and (min-width: 992px) {
+  .items {
+    flex-flow: row wrap;
+  }
+
+  .item {
+    width: max-content;
+  }
 }
-/* } */
 
 .dragged {
   background: var(--primary-white);

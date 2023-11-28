@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import _shuffle from 'lodash.shuffle';
+import { useAutoAnimate } from '@formkit/auto-animate/react';
 
 import './index.css';
 
@@ -7,6 +8,9 @@ import store from './store';
 
 export default function App() {
   const [items, setItems] = useState(store);
+  const [animationParent] = useAutoAnimate({
+    duration: 1000,
+  });
 
   const moveItem = (index: number) => {
     if (index === 0) return;
@@ -82,10 +86,10 @@ export default function App() {
         </button>
       </div>
 
-      <div className="items">
+      <div className="items" ref={animationParent}>
         {items.map((item, index) => (
           <div
-            key={index}
+            key={item.name}
             className="item"
             onDragOver={preventDefault}
             onDragEnter={preventDefault}
