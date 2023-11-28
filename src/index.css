@@ -58,43 +58,9 @@ html {
    ITEM
 */
 
-.item {
-  padding: 5px;
-  width: 100%;
-  height: 30px;
-  margin: 5px;
-  border-radius: 5px;
-
-  display: flex;
-  align-items: center;
-  border: 0.5px solid var(--primary-black);
-  cursor: pointer;
-}
-
-.item:hover {
-  box-shadow: var(--box-shadow);
-  /* color: var(--primary-white); */
-}
-
-.item-name {
-  font-size: 15px;
-  font-weight: 500;
-
-  padding: 10px;
-}
-
-.item-image {
-  width: 3rem;
-  height: 2rem;
-}
-
 @media screen and (min-width: 992px) {
   .items {
     flex-flow: row wrap;
-  }
-
-  .item {
-    width: max-content;
   }
 }
 
@@ -133,7 +99,7 @@ html {
 
 /* @media screen and (min-width: var(--lg)) { */
 .button:hover {
-  animation: pulse 2s 1s infinite;
+  animation: pulse 2s 0.2s infinite;
 }
 /* } */
 

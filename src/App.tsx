@@ -2,14 +2,15 @@ import { useState } from 'react';
 import _shuffle from 'lodash.shuffle';
 import { useAutoAnimate } from '@formkit/auto-animate/react';
 
-import './index.css';
-
+import Item from './components/Item';
 import store from './store';
+
+import './index.css';
 
 export default function App() {
   const [items, setItems] = useState(store);
   const [animationParent] = useAutoAnimate({
-    duration: 1000,
+    duration: 500,
   });
 
   const moveItem = (index: number) => {
@@ -26,6 +27,7 @@ export default function App() {
   };
 
   const handleDrag = (event, indexOfItem, itemDragged) => {
+    debugger;
     event.target.classList.add('dragged');
     event.dataTransfer.dropEffect = 'move';
     event.dataTransfer.effectAllowed = 'move';
@@ -88,9 +90,10 @@ export default function App() {
 
       <div className="items" ref={animationParent}>
         {items.map((item, index) => (
-          <div
+          <Item
             key={item.name}
-            className="item"
+            name={item.name}
+            image={item.image}
             onDragOver={preventDefault}
             onDragEnter={preventDefault}
             onDrop={(event) => handleDrop(index, event, item)}
@@ -99,15 +102,7 @@ export default function App() {
             onTouchStart={(event) => handleTouchStart(event, index, item)}
             draggable="true"
             onClick={() => moveItem(index)}
-          >
-            <img
-              src={item.image}
-              draggable="false"
-              alt="property"
-              className="item-image"
-            />
-            <p className="item-name">{item.name}</p>
-          </div>
+          />
         ))}
       </div>
     </div>
