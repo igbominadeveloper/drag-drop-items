@@ -62,6 +62,10 @@ html {
   .items {
     flex-flow: row wrap;
   }
+
+  .item {
+    width: max-content;
+  }
 }
 
 .dragged {

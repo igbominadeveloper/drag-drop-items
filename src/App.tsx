@@ -100,7 +100,7 @@ export default function App() {
             onTouchEnd={(event) => handleDrop(index, event, item)}
             onDragStart={(event) => handleDrag(event, index, item)}
             onTouchStart={(event) => handleTouchStart(event, index, item)}
-            draggable="true"
+            draggable={true}
             onClick={() => moveItem(index)}
           />
         ))}
