@@ -53,18 +53,10 @@ html {
 
   animation: slide-in-from-down 1.5s;
 }
-/* 
-   ==================================
-   ITEM
-*/
 
 @media screen and (min-width: 992px) {
   .items {
     flex-flow: row wrap;
-  }
-
-  .item {
-    width: max-content;
   }
 }
 

@@ -14,6 +14,7 @@ export default function App() {
   });
 
   const moveItem = (index: number) => {
+    debugger;
     if (index === 0) return;
     const tempArray = [...items];
     const newPosition = index - 1;
@@ -100,7 +101,6 @@ export default function App() {
             onTouchEnd={(event) => handleDrop(index, event, item)}
             onDragStart={(event) => handleDrag(event, index, item)}
             onTouchStart={(event) => handleTouchStart(event, index, item)}
-            draggable={true}
             onClick={() => moveItem(index)}
           />
         ))}
